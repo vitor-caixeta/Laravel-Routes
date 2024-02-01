@@ -1,18 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
 
 Route::get('/', 'App\Http\Controllers\RouteController@MainView');
 
-Route::get('/first-route', function () {
-    return view('first-route');
-});
+Auth::routes();
 
-Route::get('/seconde-route', function () {
-    return view('seconde-route');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/third-route', function () {
-    return view('third-route');
-});
+Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
